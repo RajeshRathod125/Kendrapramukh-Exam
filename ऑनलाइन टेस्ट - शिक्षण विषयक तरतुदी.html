@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>भारतीय राज्यघटनेतील शिक्षण विषयक तरतुदी -ऑनलाइन टेस्ट </title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: #3f51b5;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 5px solid #283593;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .instructions {
+            background: #e8eaf6;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px;
+            font-size: 16px;
+        }
+        
+        .instructions h3 {
+            color: #303f9f;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        #quiz {
+            padding: 20px;
+        }
+        
+        .question {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .question-number {
+            font-weight: bold;
+            color: #283593;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border: 2px solid #ddd;
+        }
+        
+        .option:hover {
+            background: #f0f0f0;
+        }
+        
+        .option input {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .option label {
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        .incorrect {
+            background-color: #ffebee;
+            border-color: #f44336;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 15px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        #submit-btn {
+            background: #4caf50;
+            color: white;
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        #submit-btn:hover {
+            background: #388e3c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+        }
+        
+        #retry-btn {
+            background: #ff9800;
+            color: white;
+            box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+            display: none;
+        }
+        
+        #retry-btn:hover {
+            background: #f57c00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 152, 0, 0.4);
+        }
+        
+        #result {
+            padding: 20px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: #283593;
+            background: #e8eaf6;
+            border-radius: 10px;
+            margin: 20px;
+            display: none;
+        }
+        
+        .score-display {
+            font-size: 24px;
+            color: #4caf50;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            .question {
+                padding: 15px;
+            }
+            
+            button {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>भारतीय राज्यघटनेतील शिक्षण विषयक तरतुदी - क्विझ</h1>
+        </header>
+        
+        <div class="instructions">
+            <h3>सूचना:</h3>
+            <ul>
+                <li>हि टेस्ट भारतीय राज्यघटनेतील शिक्षण विषयक तरतुदींवर आधारित आहे</li>
+                <li>प्रत्येक प्रश्नासाठी योग्य पर्याय निवडा</li>
+                <li>सर्व प्रश्नांची उत्तरे दिल्यानंतर "टेस्ट सबमिट करा" बटणावर क्लिक करा</li>
+                <li>चुकीची उत्तरे लाल रंगात दिसतील</li>
+                <li>नव्याने प्रयत्न करण्यासाठी "पुनः प्रयत्न करा" बटण वापरा</li>
+            </ul>
+        </div>
+        
+        <div id="quiz"></div>
+        
+        <div class="button-container">
+            <button id="submit-btn" onclick="submitQuiz()">टेस्ट सबमिट करा</button>
+            <button id="retry-btn" onclick="retryQuiz()">पुनः प्रयत्न करा</button>
+        </div>
+        
+        <div id="result"></div>
+    </div>
+    
+    <footer>
+        © 2025 भारतीय राज्यघटनेतील शिक्षण विषयक तरतुदी -ऑनलाइन टेस्ट 
+    </footer>
+
+    <script>
+        const questions = [
+            { q: "अनुच्छेद 21 कोणत्या अधिकाराशी संबंधित आहे?", options: ["धार्मिक स्वातंत्र्य", "जीवन व व्यक्तिगत स्वातंत्र्य", "कामाचा अधिकार", "शिक्षणाचा अधिकार"], answer: "b" },
+            { q: "अनुच्छेद 21A मध्ये कोणता अधिकार दिला आहे?", options: ["आरोग्याचा अधिकार", "मोफत व सक्तीचे शिक्षण", "धार्मिक स्वातंत्र्य", "भाषिक अधिकार"], answer: "b" },
+            { q: "अनुच्छेद 21A कोणत्या घटनादुरुस्तीमुळे समाविष्ट झाला?", options: ["42 वी", "44 वी", "86 वी", "97 वी"], answer: "c" },
+            { q: "\"Right to Education Act\" कोणत्या अनुच्छेदाशी संबंधित आहे?", options: ["21", "21A", "41", "45"], answer: "b" },
+            { q: "मानवी तस्करीवर बंदी कोणत्या अनुच्छेदात आहे?", options: ["21", "23", "24", "29"], answer: "b" },
+            { q: "सक्तीच्या मजुरीवर बंदी कोणत्या अनुच्छेदात आहे?", options: ["21", "23", "41", "46"], answer: "b" },
+            { q: "१४ वर्षांखालील मुलांना धोकादायक उद्योगात कामास मनाई कोणत्या अनुच्छेदात आहे?", options: ["21A", "23", "24", "29"], answer: "c" },
+            { q: "अनुच्छेद 24 मुख्यत्वे कोणाशी संबंधित आहे?", options: ["शिक्षण", "बालहक्क", "धार्मिक स्वातंत्र्य", "सांस्कृतिक हक्क"], answer: "b" },
+            { q: "धार्मिक शिक्षणाची सक्ती शासकीय शाळेत करता येत नाही, ही तरतूद कोणत्या अनुच्छेदात आहे?", options: ["28", "29", "30", "41"], answer: "a" },
+            { q: "अनुच्छेद 28 कोणत्या प्रकारच्या शिक्षणाशी संबंधित आहे?", options: ["तांत्रिक शिक्षण", "धार्मिक शिक्षण", "प्राथमिक शिक्षण", "उच्च शिक्षण"], answer: "b" },
+            { q: "अनुच्छेद 29 कोणत्या अधिकाराशी संबंधित आहे?", options: ["भाषिक व सांस्कृतिक ओळख", "धार्मिक स्वातंत्र्य", "रोजगाराचा अधिकार", "सामाजिक सुरक्षा"], answer: "a" },
+            { q: "भाषिक अल्पसंख्याकांना आपली भाषा-जपणूक करण्याचा अधिकार कोणत्या अनुच्छेदात आहे?", options: ["29", "30", "41", "350A"], answer: "a" },
+            { q: "अल्पसंख्याकांना शैक्षणिक संस्था स्थापन करण्याचा अधिकार कोणत्या अनुच्छेदात आहे?", options: ["29", "30", "46", "41"], answer: "b" },
+            { q: "अनुच्छेद 30 अल्पसंख्याकांना कोणता अधिकार देतो?", options: ["धार्मिक स्वातंत्र्य", "शैक्षणिक संस्था स्थापन व चालविण्याचा", "रोजगार हमी", "सांस्कृतिक संरक्षण"], answer: "b" },
+            { q: "अनुच्छेद 41 कोणत्या भागात आहे?", options: ["मूलभूत अधिकार", "मूलभूत कर्तव्ये", "राज्य धोरणाची तत्त्वे", "न्यायपालिका"], answer: "c" },
+            { q: "अनुच्छेद 41 मध्ये कोणते अधिकार नमूद आहेत?", options: ["जीवनाचा अधिकार", "शिक्षण, काम व सार्वजनिक मदत", "सांस्कृतिक अधिकार", "धार्मिक स्वातंत्र्य"], answer: "b" },
+            { q: "अनुच्छेद 41 ची अंमलबजावणी कोणत्या योजनेद्वारे दिसून येते?", options: ["मनरेगा", "स्वच्छ भारत अभियान", "मेक इन इंडिया", "प्रधानमंत्री उज्ज्वला योजना"], answer: "a" },
+            { q: "अनुच्छेद 45 चा मूळ हेतू काय होता?", options: ["मोफत व सक्तीचे प्राथमिक शिक्षण", "रोजगार हमी", "भाषिक अल्पसंख्याकांचे रक्षण", "धार्मिक स्वातंत्र्य"], answer: "a" },
+            { q: "86 व्या घटनादुरुस्तीनंतर अनुच्छेद 45 मध्ये काय बदल झाले?", options: ["शिक्षण सक्तीचे केले गेले", "बालकांचे संगोपन व पूर्वप्राथमिक शिक्षण", "रोजगाराची हमी", "धार्मिक स्वातंत्र्य"], answer: "b" },
+            { q: "अनुच्छेद 46 कोणत्या समाजघटकांसाठी विशेष संरक्षण देते?", options: ["अल्पसंख्याक", "अनुसूचित जाती-जमाती व दुर्बल घटक", "महिला", "शेतकरी"], answer: "b" },
+            { q: "अनुच्छेद 46 नुसार राज्याची जबाबदारी काय आहे?", options: ["आरोग्य सेवा देणे", "शैक्षणिक व आर्थिक संरक्षण", "धार्मिक स्वातंत्र्य", "भाषिक संरक्षण"], answer: "b" },
+            { q: "प्राथमिक शिक्षण मातृभाषेत देण्याची तरतूद कोणत्या अनुच्छेदात आहे?", options: ["45", "350A", "30", "41"], answer: "b" },
+            { q: "अनुच्छेद 350A कोणाशी संबंधित आहे?", options: ["भाषिक अल्पसंख्याकांचे शिक्षण", "सांस्कृतिक हक्क", "कामाचा अधिकार", "धार्मिक स्वातंत्र्य"], answer: "a" },
+            { q: "अनुच्छेद 350B मध्ये काय नमूद आहे?", options: ["भाषिक अल्पसंख्याकांसाठी विशेष अधिकारी", "सामाजिक सुरक्षा योजना", "मोफत शिक्षण", "रोजगार हमी"], answer: "a" },
+            { q: "अनुच्छेद 350A व 350B कोणत्या भागात येतात?", options: ["भाग XVII – भाषा", "भाग III – अधिकार", "भाग IV – राज्य धोरण", "भाग V – केंद्र शासन"], answer: "a" },
+            { q: "पालकांनी मुलांना शिक्षण देणे हे कोणत्या अनुच्छेदात मूलभूत कर्तव्य आहे?", options: ["21A", "45", "51A(क)", "350A"], answer: "c" },
+            { q: "अनुच्छेद 51A(क) कोणत्या वयोगटासाठी पालकांना कर्तव्य घालतो?", options: ["० ते ५", "६ ते १४", "१४ ते १८", "१८ पेक्षा जास्त"], answer: "b" },
+            { q: "86 वी घटनादुरुस्ती कोणत्या अनुच्छेदांशी संबंधित आहे?", options: ["21A, 45, 51A(क)", "23, 24, 41", "28, 29, 30", "350A, 350B, 46"], answer: "a" },
+            { q: "अनुच्छेद 23 व 24 चा अप्रत्यक्ष संबंध कोणाशी आहे?", options: ["आरोग्य", "शिक्षण", "रोजगार", "करप्रणाली"], answer: "b" },
+            { q: "अनुच्छेद 21A ची अंमलबजावणी कोणत्या कायद्याने केली गेली?", options: ["RTE Act 2009", "MGNREGA", "Child Labour Act", "SC/ST Act"], answer: "a" },
+            { q: "अनुच्छेद 28 कोणत्या भागात आहे?", options: ["भाग III – मूलभूत अधिकार", "भाग IV – राज्य धोरण", "भाग XVII – भाषा", "भाग V – केंद्र शासन"], answer: "a" },
+            { q: "अनुच्छेद 29 व 30 यांचा उद्देश काय आहे?", options: ["अल्पसंख्याकांचे संरक्षण", "आरोग्य सुधारणा", "रोजगार हमी", "कृषी सुधारणा"], answer: "a" },
+            { q: "अनुच्छेद 41 कशा प्रकारचा अधिकार आहे?", options: ["सक्तीचा", "मार्गदर्शक (Directive)", "मूलभूत", "आर्थिक"], answer: "b" },
+            { q: "अनुच्छेद 23 व 24 कोणत्या भागात आहेत?", options: ["भाग III – मूलभूत अधिकार", "भाग IV – राज्य धोरण", "भाग XVII – भाषा", "भाग V – केंद्र शासन"], answer: "a" },
+            { q: "अनुच्छेद 45 चे मूळ लक्ष्य किती वर्षांच्या आत मोफत प्राथमिक शिक्षण देणे होते?", options: ["५ वर्षे", "१० वर्षे", "१५ वर्षे", "२० वर्षे"], answer: "c" },
+            { q: "अनुच्छेद 350B अंतर्गत कोण नेमला जातो?", options: ["राष्ट्रपती", "राज्यपाल", "भाषिक अल्पसंख्याकांसाठी विशेष अधिकारी", "सर्वोच्च न्यायालय"], answer: "c" },
+            { q: "अनुच्छेद 29 व 350A यांमध्ये साम्य काय आहे?", options: ["धार्मिक स्वातंत्र्य", "भाषिक हक्कांचे संरक्षण", "रोजगार हमी", "शिक्षण मोफत करणे"], answer: "b" },
+            { q: "अनुच्छेद 46 मध्ये कोणत्या घटकांचा विशेष उल्लेख आहे?", options: ["शेतकरी", "महिला", "अनुसूचित जाती-जमाती व इतर दुर्बल घटक", "सरकारी अधिकारी"], answer: "c" },
+            { q: "अनुच्छेद 21A शिक्षण कोणत्या प्रकारे उपलब्ध करून देतो?", options: ["मोफत व सक्तीचे", "फक्त मोफत", "फक्त सक्तीचे", "निवडक गटासाठी"], answer: "a" },
+            { q: "शिक्षण हक्क कायद्यानुसार एक शिक्षक किती विद्यार्थ्यांसाठी अपेक्षित आहे?", options: ["1:20", "1:30", "1:40", "1:50"], answer: "b" },
+            { q: "RTE कायद्यानुसार शिक्षण कोणत्या प्रकारचे असावे?", options: ["व्यापारी", "धार्मिक", "सर्वसमावेशक", "निवडक"], answer: "c" },
+            { q: "शिक्षण हक्क कायद्यानुसार कोणती समिती शाळांच्या कामकाजावर देखरेख ठेवते?", options: ["विद्यालय निरीक्षण", "शाळा व्यवस्थापन समिती", "शिक्षण बोर्ड", "पोलीस विभाग"], answer: "b" },
+            { q: "RTE अंतर्गत प्रवेशासाठी कोणता ओळख पुरावा बंधनकारक नाही?", options: ["जन्म दाखला", "आधार कार्ड", "पालकांचे उत्पन्न प्रमाणपत्र", "कोणताही नाही"], answer: "d" },
+            { q: "शाळांमध्ये मूलभूत सुविधांचा अभाव असल्यास पालक तक्रार कोठे करू शकतात?", options: ["पोलीस ठाणे", "शिक्षण संचालक", "स्थानिक स्वराज्य संस्था", "सार्वजनिक बांधकाम विभाग"], answer: "c" },
+            { q: "शिक्षणाच्या हक्काचा कायदा कोणत्या मूलभूत हक्काशी संबंधित आहे?", options: ["जीवनाचा हक्क", "संपत्तीचा हक्क", "कामाचा हक्क", "धर्माचा हक्क"], answer: "a" },
+            { q: "RTE कायद्यात पालकांसाठी कोणती जबाबदारी नमूद आहे?", options: ["शाळा सुरू करणे", "वर्ग घेणे", "बालकाला शाळेत पाठवणे", "शिक्षक प्रशिक्षण"], answer: "c" },
+            { q: "कोणत्या अधिनियमांतर्गत खासगी शाळांना 25% प्रवेश देणे बंधनकारक आहे?", options: ["बाल संरक्षण अधिनियम", "शिक्षण हक्क अधिनियम", "अल्पसंख्यांक अधिनियम", "माध्यमिक शिक्षण अधिनियम"], answer: "b" },
+            { q: "RTE कायद्यानुसार, मुलांना शिक्षणासाठी कोणते शुल्क आकारले जाऊ शकत नाही?", options: ["प्रवेश फी", "परीक्षा फी", "संकुल विकास शुल्क", "वरील सर्व"], answer: "d" },
+            { q: "RTE कायद्यानुसार शिक्षकांना कोणत्या प्रकारची सेवा अनुज्ञेय नाही?", options: ["मतदान", "परीक्षा निरीक्षक", "खाजगी शिकवणी", "प्रशिक्षण"], answer: "c" },
+            { q: "शिक्षणाचे हक्कासाठी पालकांना काय अधिकार आहे?", options: ["तक्रार नोंदवणे", "शिक्षक नियुक्ती", "अभ्यासक्रम ठरवणे", "परीक्षा घेणे"], answer: "a" },
+            { q: "बालकाला किती अंतराच्या आत शाळा उपलब्ध असावी असे RTE कायदा म्हणतो?", options: ["1 किमी", "2 किमी", "3 किमी", "5 किमी"], answer: "a" },
+            { q: "RTE अंतर्गत कोणत्या वयोगटातील मुलांना शिक्षण देणे अनिवार्य आहे?", options: ["0–6", "6–14", "10–18", "4–10"], answer: "b" },
+            { q: "RTE कायद्यानुसार कोणते शिक्षणदंड गैरकायदेशीर आहे?", options: ["वाचाल तर वाचाल", "शिक्षकांची शाब्दिक शिक्षा", "शारीरिक शिक्षा", "शिक्षण प्रवेश नाकारणे"], answer: "c" },
+            { q: "कोणती यंत्रणा RTE कायद्याच्या अंमलबजावणीसाठी जबाबदार आहे?", options: ["केंद्र सरकार", "राज्य सरकार", "शाळा समिती", "सर्व वरील"], answer: "d" },
+            { q: "शिक्षकांना नियुक्त करताना कोणते प्रमाणपत्र आवश्यक आहे?", options: ["आरोग्य प्रमाणपत्र", "व्यवहार प्रमाणपत्र", "NCTE मान्यता", "पोलीस तपासणी"], answer: "c" },
+            { q: "शाळा व्यवस्थापन समितीचा अध्यक्ष कोण असतो?", options: ["मुख्याध्यापक", "वरिष्ठ शिक्षक", "पालक प्रतिनिधी", "स्थानिक सरपंच"], answer: "c" },
+            { q: "RTE कायद्यानुसार कोणते मूल \"दाखल करणे नाकारले जाऊ नये\"?", options: ["अपंग मूल", "गरिब मूल", "अनाथ मूल", "वरील सर्व"], answer: "d" },
+            { q: "RTE कायद्यात \"मोफत\" या शब्दाचा अर्थ काय आहे?", options: ["शिक्षणाशिवाय खर्च", "शासन खर्चाने शिक्षण", "स्वयंसेवी शिक्षण", "महाविद्यालयीन शिक्षण"], answer: "b" },
+            { q: "शाळा मान्यता मिळवण्यासाठी कोणते प्रमाणपत्र बंधनकारक आहे?", options: ["NCTE", "CBSE", "RTE अनुरुप मान्यता", "शिक्षक मंडळ"], answer: "c" },
+            { q: "शिक्षण हक्क कायद्यानुसार प्रवेशाची शेवटची वयोमर्यादा काय आहे?", options: ["10 वर्षे", "14 वर्षे", "12 वर्षे", "16 वर्षे"], answer: "b" },
+            { q: "विद्यार्थ्यांच्या हजेरीची नोंद कोण ठेवतो?", options: ["पालक", "शिक्षक", "शाळा समिती", "स्थानिक यंत्रणा"], answer: "b" },
+            { q: "कोणत्या विभागाला सर्वेक्षण जबाबदारी असते?", options: ["शिक्षण विभाग", "ग्रामपंचायत", "पोलीस", "आरोग्य विभाग"], answer: "a" },
+            { q: "कोणत्या वर्षी शिक्षण हक्क कायदा अस्तित्वात आला?", options: ["2005", "2009", "2010", "2007"], answer: "b" },
+            { q: "RTE कायदा संपूर्ण भारतात लागू आहे का?", options: ["हो", "नाही", "फक्त महाराष्ट्रात", "फक्त ग्रामीण भागात"], answer: "a" },
+            { q: "शिक्षणाच्या सर्वसामान्य अधिकारासाठी शासन कोणती योजना देते?", options: ["प्रधानमंत्री शिक्षण योजना", "सर्वशिक्षा अभियान", "एक भारत योजना", "शालेय युनिफॉर्म योजना"], answer: "b" },
+            { q: "शिक्षक नेमणुकीसाठी कोणत्या संस्थेचे मान्यता आवश्यक आहे?", options: ["UGC", "MPSC", "NCTE", "NCERT"], answer: "c" },
+            { q: "RTE कायद्यामुळे कोणता बदल झाला?", options: ["शिक्षणाचे खाजगीकरण", "विद्यार्थ्यांना हक्क मिळाला", "शाळा अनुदानित", "पालकांना कर भरावा लागतो"], answer: "b" },
+            { q: "RTE कायद्यानुसार खासगी शाळांनी कोणत्या मुलांना प्रवेश द्यावा?", options: ["SC/ST", "आर्थिक दुर्बल", "अपंग", "वरील सर्व"], answer: "d" },
+            { q: "RTE अंतर्गत सर्वात महत्त्वाचा उद्देश कोणता आहे?", options: ["गरिबांसाठी भोजन", "सर्व बालकांसाठी मोफत शिक्षण", "शिक्षक वाढवणे", "अभ्यासक्रम बदल"], answer: "b" },
+            { q: "शाळेत प्रवेश नाकारण्यावर काय कारवाई होते?", options: ["दंड", "अटक", "शिक्षण अधिकारी चौकशी", "वरील सर्व"], answer: "c" },
+            { q: "RTE अंतर्गत पालकांनी कोणती शुल्क रक्कम भरावी लागते?", options: ["1000 रु.", "500 रु.", "काहीही नाही", "50 रु."], answer: "c" },
+            { q: "शाळेच्या प्रवेश प्रक्रियेत कोणती गोष्ट विचारता येत नाही?", options: ["वडिलांचे शिक्षण", "उत्पन्न", "धर्म", "वरील सर्व"], answer: "d" },
+            { q: "शाळेत प्रवेश घेतलेल्या बालकाचे मूल्यमापन कोणत्या प्रकारे होते?", options: ["दर महिन्याला परीक्षा", "वार्षिक परीक्षा", "सतत आणि व्यापक मूल्यमापन", "एकदाच अंतिम परीक्षा"], answer: "c" },
+            { q: "RTE कायद्यानुसार पालकांचे प्रतिनिधित्व कोण पाहतो?", options: ["शाळा समिती", "शिक्षक", "मुख्याध्यापक", "विभागीय अधिकारी"], answer: "a" },
+            { q: "शिक्षण हे हक्क कधी घोषित झाले?", options: ["2000", "2005", "2002", "2009"], answer: "c" },
+            { q: "शिक्षण हक्क कायद्यातील शिक्षणाचे स्वरूप काय आहे?", options: ["निवडक", "सर्वसमावेशक", "सीमित", "फक्त प्राथमिक"], answer: "b" },
+            { q: "शाळांच्या दर्जाबाबत कोण पाहणी करतो?", options: ["मुख्याध्यापक", "शिक्षण अधिकारी", "पालक", "शिक्षक"], answer: "b" },
+            { q: "शिक्षण हक्क कायदा कोणत्या घटनेद्वारे प्रभावी झाला?", options: ["42वी", "86वी", "44वी", "93वी"], answer: "b" }
+        ];
+
+        function generateQuiz() {
+            const quizContainer = document.getElementById('quiz');
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.id = `question-${index}`;
+                
+                questionDiv.innerHTML = `
+                    <div class="question-number">प्रश्न ${index + 1}:</div>
+                    <div class="question-text">${q.q}</div>
+                `;
+                
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'options';
+                
+                q.options.forEach((opt, i) => {
+                    const optionId = `q${index}_opt${i}`;
+                    const value = String.fromCharCode(97 + i);
+                    
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'option';
+                    
+                    optionDiv.innerHTML = `
+                        <input type="radio" name="question${index}" id="${optionId}" value="${value}">
+                        <label for="${optionId}">${opt}</label>
+                    `;
+                    
+                    optionsDiv.appendChild(optionDiv);
+                });
+                
+                questionDiv.appendChild(optionsDiv);
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        function submitQuiz() {
+            let totalQuestions = questions.length;
+            let score = 0;
+            let hasIncorrectAnswers = false;
+
+            questions.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const selected = document.querySelector(`input[name="question${index}"]:checked`);
+                
+                // Reset any previous incorrect highlighting
+                const options = questionDiv.querySelectorAll('.option');
+                options.forEach(opt => opt.classList.remove('incorrect'));
+                
+                if (selected && selected.value === q.answer) {
+                    score++;
+                } else if (selected) {
+                    // Highlight incorrect answer
+                    selected.parentElement.classList.add('incorrect');
+                    hasIncorrectAnswers = true;
+                }
+            });
+
+            // Show result
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <div class="score-display">एकूण गुण: ${score} / ${totalQuestions}</div>
+            `;
+            
+            // Show retry button and hide submit button
+            document.getElementById('submit-btn').style.display = 'none';
+            document.getElementById('retry-btn').style.display = 'block';
+            
+            // Scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function retryQuiz() {
+            // Reset all selections and highlighting
+            questions.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                
+                options.forEach(opt => {
+                    opt.classList.remove('incorrect');
+                    const radio = opt.querySelector('input[type="radio"]');
+                    if (radio) radio.checked = false;
+                });
+            });
+            
+            // Hide result and retry button, show submit button
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('retry-btn').style.display = 'none';
+            document.getElementById('submit-btn').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize quiz when page loads
+        window.onload = function() {
+            generateQuiz();
+        };
+    </script>
+</body>
+</html>
